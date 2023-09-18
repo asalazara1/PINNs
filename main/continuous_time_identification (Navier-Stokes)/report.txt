@@ -1,0 +1,50 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 1 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: NavierStokes.py
+--------------------------------------------------------------------------------
+NavierStokes.py:69:25: ERROR: Using member tf.contrib.opt.ScipyOptimizerInterface in deprecated module tf.contrib. tf.contrib.opt.ScipyOptimizerInterface cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'NavierStokes.py'
+ outputting to 'NS_v2.py'
+--------------------------------------------------------------------------------
+
+22:0: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+52:20: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+52:38: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+55:20: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+56:20: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+57:20: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+59:20: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+60:20: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+64:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+65:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+66:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+67:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+69:25: ERROR: Using member tf.contrib.opt.ScipyOptimizerInterface in deprecated module tf.contrib. tf.contrib.opt.ScipyOptimizerInterface cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+77:30: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+80:15: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+98:27: INFO: Renamed 'tf.truncated_normal' to 'tf.random.truncated_normal'
+121:12: INFO: Added keywords to args of function 'tf.gradients'
+122:13: INFO: Added keywords to args of function 'tf.gradients'
+124:14: INFO: Added keywords to args of function 'tf.gradients'
+125:14: INFO: Added keywords to args of function 'tf.gradients'
+126:14: INFO: Added keywords to args of function 'tf.gradients'
+127:15: INFO: Added keywords to args of function 'tf.gradients'
+128:15: INFO: Added keywords to args of function 'tf.gradients'
+130:14: INFO: Added keywords to args of function 'tf.gradients'
+131:14: INFO: Added keywords to args of function 'tf.gradients'
+132:14: INFO: Added keywords to args of function 'tf.gradients'
+133:15: INFO: Added keywords to args of function 'tf.gradients'
+134:15: INFO: Added keywords to args of function 'tf.gradients'
+136:14: INFO: Added keywords to args of function 'tf.gradients'
+137:14: INFO: Added keywords to args of function 'tf.gradients'
+--------------------------------------------------------------------------------
+
