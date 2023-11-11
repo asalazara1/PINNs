@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import deepxde as dde
+import time
 
 dde.backend.set_default_backend("tensorflow")
 
@@ -176,7 +177,7 @@ class PhysicsInformedNN:
         dde.optimizers.config.set_LBFGS_options(maxcor=cor, ftol=tol,  maxiter=iter, maxfun=fun, maxls=ls)
         dde.optimizers.tfp_optimizer.lbfgs_minimize(variables, time_step)
 
-
+print("Creating Params")
 layers1 = [3, 20, 20, 20, 20, 20, 20, 20, 20, 2]
 layers2 = [3, 50, 50, 50, 50, 50, 50, 50, 50, 2]
 layers3 = [3, 100, 100, 100, 100, 100, 100, 100, 100, 2]
@@ -203,7 +204,7 @@ tf.random.set_seed(0)
 t_b = tf.random.uniform((N_b,1), lb[0], ub[0], dtype=DTYPE)
 x_b = tf.random.uniform((N_b,1), lb[1], ub[1], dtype=DTYPE)
 y_b = np.zeros((N_b,1))
-for i in range(len(x_b)):
+for i in range(x_b.shape[0]):
     y_b[i] = np.power(-1,i)*np.sqrt(1-np.power(x_b[i],2))
 
 y_b = tf.convert_to_tensor(y_b, dtype=DTYPE)
@@ -229,6 +230,8 @@ x_r = tf.random.uniform((N_r,1), lb[1], ub[1], dtype=DTYPE)
 y_r = tf.random.uniform((N_r,1),-1,1, dtype=DTYPE)*tf.sqrt(1-tf.pow(x_r,2))
 X_r = tf.concat([ x_r, y_r, t_r], axis=1)
 
+print("Setting up model")
+
 model1 = PhysicsInformedNN(lb, ub, layers1, u_data, X_data, X_r)
 
 
@@ -248,6 +251,19 @@ ls=50
 
 dde.optimizers.config.set_LBFGS_options(maxcor=cor, ftol=tol,  maxiter=iter, maxfun=fun, maxls=ls)
 
+print("Optimizing model")
+
+start = time.time()
+
+    
 dde.optimizers.tfp_optimizer.lbfgs_minimize(variables1, time_step)
+
+stop = time.time()
+
+duration = stop-start
+
+print("End trainign, time:",duration)
+
+print("Exporting model")
 
 model1.model.export('PINN_Export')
