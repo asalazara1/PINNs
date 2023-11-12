@@ -232,7 +232,7 @@ X_r = tf.concat([ x_r, y_r, t_r], axis=1)
 
 print("Setting up model")
 
-model1 = PhysicsInformedNN(lb, ub, layers1, u_data, X_data, X_r)
+model1 = PhysicsInformedNN(lb, ub, layers2, u_data, X_data, X_r)
 
 
 def time_step():
@@ -266,4 +266,4 @@ print("End trainign, time:",duration)
 
 print("Exporting model")
 
-model1.model.export('PINN_Export')
+model1.model.export('PINN_Export2')
