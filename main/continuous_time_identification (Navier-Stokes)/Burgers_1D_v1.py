@@ -111,8 +111,6 @@ lb = tf.constant([ xmin, tmin], dtype=DTYPE)
 # Upper bounds
 ub = tf.constant([xmax, tmax], dtype=DTYPE)
 
-# Set random seed for reproducible results
-tf.random.set_seed(0)
 
 # Draw uniform sample points for initial boundary data
 t_0 = tf.ones((N_0,1), dtype=DTYPE)*lb[1]
